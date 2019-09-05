@@ -1,0 +1,15 @@
+#!/bin/bash
+echo This is the prompt for starting the security camera
+read -p 'Do you wish to proceed (Y/N)?: ' inputvar
+yes1="Y"
+yes2="y"
+if [ $inputvar == $yes1 ] || [ $inputvar == $yes2 ]
+then
+	echo Starting...
+	sleep 2 
+	./security-camera.py
+else
+	echo Exiting...
+	sleep 1
+fi
+exit
