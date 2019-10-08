@@ -1,4 +1,7 @@
 #! /home/pi/.virtualenvs/cv/bin/python3.7
+
+# The above shebang is used specifically on my device to use the version
+# of Python3 that is used in the virtual environment containing OpenCV
 import os
 from picamera import PiCamera
 from picamera.array import PiRGBArray
@@ -61,6 +64,8 @@ def motion_detection():
                 motion_frame_name = str(motion_counter) + "_" + str(dt_now.month) + "-" + str(dt_now.day) + "-" + str(dt_now.year) + " " + str(dt_now.hour) + ":" + str(dt_now.minute) + ":" + str(dt_now.second)
                 cv2.imwrite(motion_frame_name + ".jpg", frame)
                 cv2.imwrite(motion_frame_name + "_thresh" + ".jpg", thresh)
+                # These linse save the raw images of the PiCamera images, and the thresholded portion of the image
+                # However, these do have some lag and need to be retooled a little.  
                 if (motion_counter >= 6):
                     motion_detected = True
             cv2.imshow("Frame", frame)
@@ -101,6 +106,8 @@ def take_video():
 
 
 def process_time(write_time):
+    # This function is spawned in a multiprocess, and is used to update
+    # the most recent time of run in a text file every minute or so.
     while (write_time.value == True):
         try:
             fid = open(filename, mode = 'r', encoding = 'utf-8')
