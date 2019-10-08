@@ -5,3 +5,6 @@ In order to run, after installing all dependencies, and entering "chmod +x secur
 
 
  
+Do be sure to download all dependencies beforehand.  
+
+Much thanks and appreciation to Adrian Rosebrock of PyImageSearch, around which this project is based.  
