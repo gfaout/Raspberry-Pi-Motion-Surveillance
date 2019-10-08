@@ -1,0 +1,4 @@
+The python dependencies below will be used in the course of running the script.  Please install them:
+
+numpy
+cv2
